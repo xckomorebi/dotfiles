@@ -106,4 +106,4 @@ source ~/.vim/coc.vim
 " keymapping
 silent! nmap <M-b> :NERDTreeToggle<CR>
 silent! nmap <M-p> :find<space>
-silent! nmap <A-F> gg=G
+silent! nmap <A-F>  :call CocAction('format')<CR>
