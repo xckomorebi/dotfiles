@@ -83,7 +83,7 @@ highlight VertSplit cterm=None ctermfg=12 ctermbg=NONE
 highlight SignColumn ctermbg=NONE
 
 " YouCompleteMe
-set backspace=indent,eol,start
+" set backspace=indent,eol,start
 
 " lightline
 let g:lightline = { 'colorscheme': 'materia' }
@@ -93,10 +93,10 @@ set noshowmode
 " Tmuxline
 " Tmuxline lightline
 
-" terminal
-" set splitbelow
-" set termwinsize=10x0
+" NERDTree
+let g:NERDTreeHijackNetrw=0
 
+" set termwinsize=10x0
 " coc
 source ~/.vim/coc.vim
 
@@ -106,4 +106,6 @@ source ~/.vim/coc.vim
 " keymapping
 silent! nmap <M-b> :NERDTreeToggle<CR>
 silent! nmap <M-p> :find<space>
-silent! nmap <A-F>  :call CocAction('format')<CR>
+silent! nmap <A-F> :call CocAction('format')<CR>
+silent! nmap <M-a> :Commentary<CR>
+silent! vmap <M-a> :Commentary<CR>
