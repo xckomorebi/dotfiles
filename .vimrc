@@ -74,7 +74,7 @@ Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 " colorscheme
-colorscheme solarized
+" colorscheme solarized
 " colorscheme onedark
 set background=dark
 
@@ -82,13 +82,15 @@ set background=dark
 highlight VertSplit cterm=None ctermfg=12 ctermbg=NONE
 highlight SignColumn ctermbg=NONE
 
-" YouCompleteMe
-" set backspace=indent,eol,start
-
 " lightline
 let g:lightline = { 'colorscheme': 'materia' }
 set laststatus=2
 set noshowmode
+
+" commentary
+autocmd FileType c setlocal commentstring=//\ %s
+autocmd FileType cpp setlocal commentstring=//\ %s
+
 
 " Tmuxline
 " Tmuxline lightline
