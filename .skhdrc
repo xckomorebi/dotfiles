@@ -1,0 +1,49 @@
+# launch applications
+ctrl - 1: open -a "iterm"
+ctrl - 2: open -a "visual studio code"
+ctrl - 3: open -a "safari"
+ctrl - 4: open -a "qq"
+ctrl - 5: open -a "google chrome"
+ctrl - 6: open -a "finder"
+
+# move window
+alt - h: yabai -m window --move rel:-20:0
+alt - l: yabai -m window --move rel:20:0
+alt - j: yabai -m window --move rel:0:20
+alt - k : yabai -m window --move rel:0:-20
+
+# change opacity
+cmd - u [
+  "iTerm2" ~
+  * : yabai -m window --opacity $(yabai -m query --windows --window | jq -r 'if .opacity < 1.0 then "1.0" else "0.9" end')
+]
+
+# rotate tree
+alt - r: yabai -m space --rotate 90
+
+# flip tree
+alt - p: yabai -m space --mirror y-axis
+
+# float / unfloat window and center on screen
+alt - t: yabai -m window --toggle float;\
+         yabai -m window --grid 10:10:4:1:4:8
+
+# toggle window split type
+# alt - e : yabai -m window --toggle split
+
+alt - s: yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "float" else "bsp" end')
+
+# balance size of windows
+shift + alt - 0: yabai -m space --balance
+
+# resize window
+shift + alt - h : yabai -m window --resize left:-20:0
+shift + alt - l : yabai -m window --resize right:20:0
+shift + alt - j : yabai -m window --resize left:20:0
+shift + alt - k : yabai -m window --resize right:-20:0
+
+alt + cmd - d : $HOME/bin/toggle_menubar
+
+.blacklist [
+  "Logic Pro"
+]

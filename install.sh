@@ -1,5 +1,7 @@
 #! /bin/bash
 
+# DEPRECATED
+
 BASEDIR=$(
     cd $(dirname "$0")
     pwd
