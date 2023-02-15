@@ -1,0 +1,1 @@
+!function(t){if(t){var o={},i=t.prototype.stopCallback;t.prototype.stopCallback=function(t,n,e,a){return!!this.paused||!o[e]&&!o[a]&&i.call(this,t,n,e)},t.prototype.bindGlobal=function(t,i,n){if(this.bind(t,i,n),t instanceof Array)for(var e=0;e<t.length;e++)o[t[e]]=!0;else o[t]=!0},t.init()}}("undefined"!=typeof Mousetrap?Mousetrap:void 0);
