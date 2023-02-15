@@ -5,7 +5,7 @@
 # export DEFAULT_USER="$(whoami)"
 
 #ZSH suggestion color
-#ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
+# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
 
 # Path to your oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"
@@ -74,7 +74,9 @@ HIST_STAMPS="mm/dd/yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git history tmux)
+plugins=(tmux git docker brew) 
+
+# fpath=(~/repo/completions $fpath)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -105,15 +107,25 @@ source $ZSH/oh-my-zsh.sh
 #alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # common config
-alias r=R
-alias act='source venv/bin/activate'
+
 export PATH=$PATH:$HOME/bin
 export BC_ENV_ARGS="${HOME}/.bc"
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+alias r=R
+alias act='source venv/bin/activate'
+
+if [ -x "$(command -v yt-dlp)" ]; then
+    alias youtube-dl="yt-dlp"
+fi
+
+if [ -x "$(command -v nvim)" ]; then
+    alias vim=nvim
+fi
 
 if [ -e "${HOME}/.zshrc_local" ]; then
     source "${HOME}/.zshrc_local"
 fi
 
-alias youtube-dl="yt-dlp"
-
-export PATH=/Applications/MATLAB_R2022b.app/bin:$PATH

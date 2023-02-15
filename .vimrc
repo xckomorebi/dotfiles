@@ -1,4 +1,4 @@
-syntax on
+" syntax on
 
 set noerrorbells
 set belloff=all
@@ -24,6 +24,8 @@ set wildchar=<tab>
 set ignorecase
 set wildignore=*.pyc
 
+" set autochdir
+
 " set formatoptions-=cro
 " set paste
 au FileType * set fo-=c fo-=r fo-=o
@@ -32,23 +34,20 @@ call plug#begin('~/.vim/plugged')
 
 " themes
 Plug 'morhetz/gruvbox'
-Plug 'ErichDonGubler/vim-sublime-monokai'
-Plug 'tomasiser/vim-code-dark'
-Plug 'joshdick/onedark.vim'
-Plug 'altercation/vim-colors-solarized'
+Plug 'glepnir/oceanic-material'
+Plug 'sainnhe/sonokai'
+
 
 " look
 Plug 'itchyny/lightline.vim'
 Plug 'edkolev/tmuxline.vim'
 
 " utils
-" Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
 Plug 'preservim/nerdtree'
 
 " completion
-" Plug 'ycm-core/YouCompleteMe'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " wilder
 if has('nvim')
@@ -71,16 +70,19 @@ endif
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
 
+Plug 'nvim-lua/plenary.nvim'
+Plug 'BurntSushi/ripgrep'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
+
 call plug#end()
 
 " colorscheme
-" colorscheme solarized
-" colorscheme onedark
-set background=dark
+" colorscheme edge
+let g:sonokai_disable_italic_comment=1
+let g:sonokai_transparent_background=1
+colorscheme sonokai
+highlight LineNr ctermfg=151
 
-" background
-highlight VertSplit cterm=None ctermfg=12 ctermbg=NONE
-highlight SignColumn ctermbg=NONE
 
 " lightline
 let g:lightline = { 'colorscheme': 'materia' }
@@ -97,6 +99,7 @@ autocmd FileType cpp setlocal commentstring=//\ %s
 
 " NERDTree
 let g:NERDTreeHijackNetrw=0
+let g:netrw_keepdir=0
 
 " set termwinsize=10x0
 " coc
@@ -106,8 +109,14 @@ source ~/.vim/coc.vim
 " call wilder#setup({'modes': [':', '/', '?']})
 
 " keymapping
-silent! nmap <M-b> :NERDTreeToggle<CR>
-silent! nmap <M-p> :find<space>
-silent! nmap <A-F> :call CocAction('format')<CR>
-silent! nmap <M-a> :Commentary<CR>
+silent! nmap <M-b> <cmd>NERDTreeToggle<CR>
+
+silent! nmap <A-F> <cmd>call CocAction('format')<CR>
+
+silent! nmap <M-a> <cmd>Commentary<CR>
 silent! vmap <M-a> :Commentary<CR>
+
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+" nnoremap <leader>fh <cmd>Telescope help_tags<cr>
