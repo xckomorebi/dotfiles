@@ -1,5 +1,6 @@
 # launch applications
 ctrl - 1: open -a "iterm"
+# ctrl - 1: open -a "alacritty"
 ctrl - 2: open -a "visual studio code"
 ctrl - 3: open -a "safari"
 ctrl - 4: open -a "qq"
@@ -15,6 +16,7 @@ alt - k : yabai -m window --move rel:0:-20
 # change opacity
 cmd - u [
   "iTerm2" ~
+  "Alacritty" ~
   * : yabai -m window --opacity $(yabai -m query --windows --window | jq -r 'if .opacity < 1.0 then "1.0" else "0.9" end')
 ]
 
