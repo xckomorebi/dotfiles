@@ -108,8 +108,7 @@ shell:
   program: /bin/zsh
   args:
     - -c
-    - "/opt/homebrew/bin/tty-clock -C 6 -cB"
-
+    - "/opt/homebrew/bin/tty-clock -C 6 -cB && exec zsh -l"
 
 ## Key bindings
 ##

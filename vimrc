@@ -46,9 +46,6 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'tpope/vim-commentary'
 Plug 'preservim/nerdtree'
 
-" completion
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
 " wilder
 if has('nvim')
   function! UpdateRemotePlugins(...)
