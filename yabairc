@@ -6,8 +6,8 @@ yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 # global settings
 yabai -m config window_opacity               on
 yabai -m config window_opacity_duration      0.0
-yabai -m config active_window_opacity        1.0
-yabai -m config normal_window_opacity        1.0
+yabai -m config active_window_opacity        0.9
+yabai -m config normal_window_opacity        0.9
 
 yabai -m config mouse_follows_focus          off
 yabai -m config focus_follows_mouse          off
@@ -23,12 +23,15 @@ yabai -m config mouse_action1                move
 yabai -m config mouse_action2                resize
 yabai -m config mouse_drop_action            swap
 
-yabai -m config window_border                off
-yabai -m config window_border_width          4
-yabai -m config window_border_hidpi          off
-yabai -m config window_border_blur           off
-yabai -m config active_window_border_color   0xff123123
-yabai -m config normal_window_border_color   0xff555555
+yabai -m config window_border                on
+yabai -m config window_border_width          3
+yabai -m config window_border_hidpi          on
+yabai -m config window_border_blur           on
+
+# transparent window border, just use blur
+yabai -m config active_window_border_color   0x00ffffff
+yabai -m config normal_window_border_color   0x00ffffff
+
 
 # general space settings
 yabai -m config layout                       float
@@ -36,7 +39,7 @@ yabai -m config top_padding                  5
 yabai -m config bottom_padding               5
 yabai -m config left_padding                 5
 yabai -m config right_padding                5
-yabai -m config window_gap                   5
+yabai -m config window_gap                   0
 
 # apps to not manage (ignore)
 yabai -m rule --add app="^Alfred Preferences$" manage=off
@@ -44,24 +47,21 @@ yabai -m rule --add app="^System Preferences$" manage=off
 yabai -m rule --add app="^Logi Options$" manage=off
 yabai -m rule --add app="^Logic Pro$" manage=off
 yabai -m rule --add app="^WhatsApp$" manage=off
-yabai -m rule --add app="^iTerm2$" manage=off
-yabai -m rule --add app="^Alacritty$" manage=off
+yabai -m rule --add app="^iTerm2$" manage=off opacity=1.0
+yabai -m rule --add app="^Docker Desktop$" manage=off
+
+
 yabai -m rule --add app="^Code$" opacity=0.9
 yabai -m rule --add app="^Safari$" opacity=0.9
 yabai -m rule --add app="^Discord$" opacity=0.9
-yabai -m rule --add app="^Docker Desktop$" manage=off
 yabai -m rule --add app="^Finder$" manage=off opacity=0.9
 yabai -m rule --add app="^QQ$" manage=off opacity=0.9
-yabai -m rule --add app="^MyWallpaper$" manage=off
-
-yabai -m rule --add app="^Google Chrome$" title="^DevTools" manage=off
+yabai -m rule --add app="^Google Chrome$" title="^DevTools" manage=off opacity=1.0
 yabai -m rule --add app="^Safari$" title="^Web Inspector" manage=off
 yabai -m rule --add app="^Safari$" title="^$" manage=off opacity=1
 
-# yabai -m rule --add app="^Wally$" manage=off
-# yabai -m rule --add app="^Pika$" manage=off
-# yabai -m rule --add app="^Archive Utility$" manage=off
-# yabai -m rule --add app="^balenaEtcher$" manage=off
-# yabai -m rule --add app="^Creative Cloud$" manage=off
+yabai -m rule --add app="^MyWallpaper$" manage=off border=off opacity=.99
+yabai -m rule --add app="^Alacritty$" manage=off border=off
+yabai -m rule --add app="^Dynamic Wallpaper$" manage=off border=off opacity=0.99
 
 echo "yabai configuration loaded.."
