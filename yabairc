@@ -23,7 +23,7 @@ yabai -m config mouse_action1                move
 yabai -m config mouse_action2                resize
 yabai -m config mouse_drop_action            swap
 
-yabai -m config window_border                on
+yabai -m config window_border                off
 yabai -m config window_border_width          3
 yabai -m config window_border_hidpi          on
 yabai -m config window_border_blur           on
@@ -45,17 +45,17 @@ yabai -m config window_gap                   0
 yabai -m rule --add app="^Alfred Preferences$" manage=off
 yabai -m rule --add app="^System Preferences$" manage=off
 yabai -m rule --add app="^Logi Options$" manage=off
-yabai -m rule --add app="^Logic Pro$" manage=off
+yabai -m rule --add app="^Logic Pro$" manage=off opacity=1.0
 yabai -m rule --add app="^WhatsApp$" manage=off
 yabai -m rule --add app="^iTerm2$" manage=off opacity=1.0
 yabai -m rule --add app="^Docker Desktop$" manage=off
 
 
-yabai -m rule --add app="^Code$" opacity=0.9
-yabai -m rule --add app="^Safari$" opacity=0.9
-yabai -m rule --add app="^Discord$" opacity=0.9
-yabai -m rule --add app="^Finder$" manage=off opacity=0.9
-yabai -m rule --add app="^QQ$" manage=off opacity=0.9
+yabai -m rule --add app="^Code$"
+yabai -m rule --add app="^Safari$"
+yabai -m rule --add app="^Discord$"
+yabai -m rule --add app="^Finder$" manage=off
+yabai -m rule --add app="^QQ$" manage=off
 yabai -m rule --add app="^Google Chrome$" title="^DevTools" manage=off opacity=1.0
 yabai -m rule --add app="^Safari$" title="^Web Inspector" manage=off
 yabai -m rule --add app="^Safari$" title="^$" manage=off opacity=1
