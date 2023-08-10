@@ -4,7 +4,7 @@ set noerrorbells
 set belloff=all
 set tabstop=4 softtabstop=4
 set shiftwidth=4
-:" set tabstop=2 softtabstop=2
+" set tabstop=2 softtabstop=2
 " set shiftwidth=2
 
 set mouse=a
@@ -107,7 +107,6 @@ source ~/.vim/coc.vim
 
 " keymapping
 silent! nmap <M-b> <cmd>NERDTreeToggle<CR>
-
 silent! nmap <A-F> <cmd>call CocAction('format')<CR>
 
 silent! nmap <M-a> <cmd>Commentary<CR>
