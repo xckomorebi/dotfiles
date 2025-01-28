@@ -4,7 +4,7 @@ set noerrorbells
 set belloff=all
 set tabstop=4 softtabstop=4
 set shiftwidth=4
-:" set tabstop=2 softtabstop=2
+" set tabstop=2 softtabstop=2
 " set shiftwidth=2
 
 set mouse=a
@@ -37,7 +37,6 @@ Plug 'morhetz/gruvbox'
 Plug 'glepnir/oceanic-material'
 Plug 'sainnhe/sonokai'
 
-
 " look
 Plug 'itchyny/lightline.vim'
 Plug 'edkolev/tmuxline.vim'
@@ -65,11 +64,13 @@ endif
 
 " coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
 Plug 'sheerun/vim-polyglot'
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'BurntSushi/ripgrep'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
@@ -82,14 +83,23 @@ highlight LineNr ctermfg=151
 
 
 " lightline
-let g:lightline = { 'colorscheme': 'materia' }
+let g:lightline = {
+            \ 'colorscheme': 'materia',
+            \ 'active': {
+            \   'left': [ [ 'mode', 'paste' ],
+            \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+            \ },
+            \ 'component_function': {
+            \   'gitbranch': 'FugitiveHead'
+            \ },
+            \ }
+
 set laststatus=2
 set noshowmode
 
 " commentary
 autocmd FileType c setlocal commentstring=//\ %s
 autocmd FileType cpp setlocal commentstring=//\ %s
-
 
 " Tmuxline
 " Tmuxline lightline
@@ -104,16 +114,17 @@ source ~/.vim/coc.vim
 
 " wilder
 " call wilder#setup({'modes': [':', '/', '?']})
-
 " keymapping
-silent! nmap <M-b> <cmd>NERDTreeToggle<CR>
+
+let mapleader=" "
 
 silent! nmap <A-F> <cmd>call CocAction('format')<CR>
 
-silent! nmap <M-a> <cmd>Commentary<CR>
-silent! vmap <M-a> :Commentary<CR>
+nnoremap <leader>b <cmd>NERDTreeToggle<cr>
+nnoremap <leader>r <cmd>NERDTreeFind<cr>
 
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fp <cmd>Telescope git_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
-" nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
