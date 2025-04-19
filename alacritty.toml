@@ -1,0 +1,88 @@
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[[keyboard.bindings]]
+chars = "\u001B\u007F"
+key = "Back"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u0015"
+key = "Back"
+mods = "command"
+
+[[keyboard.bindings]]
+key = "U"
+mods = "command"
+
+[keyboard.bindings.command]
+args = ["-c", "~/bin/toggle_alacritty_opacitty"]
+program = "sh"
+
+[colors.bright]
+black = "#535353"
+blue = "#6fbce2"
+cyan = "#96dcdb"
+green = "#a3cca2"
+magenta = "#e586e7"
+red = "#e4859b"
+white = "#dfdfdf"
+yellow = "#e1e487"
+
+[colors.cursor]
+cursor = "#bbbbbb"
+text = "#ffffff"
+
+[colors.normal]
+black = "#353535"
+blue = "#449fd0"
+cyan = "#65aaaf"
+green = "#89d287"
+magenta = "#da62dc"
+red = "#e74669"
+white = "#b4b4b4"
+yellow = "#dab853"
+
+[colors.primary]
+background = "#1c1c1c"
+foreground = "#c8c8c8"
+
+[colors.selection]
+background = "#e6e6e6"
+text = "#000000"
+
+[cursor]
+blink_interval = 750
+
+[env]
+TERM = "xterm-256color"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[selection]
+save_to_clipboard = false
+
+[window]
+decorations = "buttonless"
+dynamic_padding = false
+opacity = 0.5
+blur = true
+option_as_alt = "both"
+
+[window.dimensions]
+columns = 100
+lines = 50
+
+[window.padding]
+x = 2
+y = 2
+
+[keyboard]
+
+[font]
+size = 14.0
+
+[font.normal]
+family = "MesloLGS NF"
