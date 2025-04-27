@@ -1,24 +1,6 @@
 [colors]
 draw_bold_text_with_bright_colors = true
 
-[[keyboard.bindings]]
-chars = "\u001B\u007F"
-key = "Back"
-mods = "Alt"
-
-[[keyboard.bindings]]
-chars = "\u0015"
-key = "Back"
-mods = "command"
-
-[[keyboard.bindings]]
-key = "U"
-mods = "command"
-
-[keyboard.bindings.command]
-args = ["-c", "~/bin/toggle_alacritty_opacitty"]
-program = "sh"
-
 [colors.bright]
 black = "#535353"
 blue = "#6fbce2"
@@ -78,8 +60,6 @@ lines = 50
 [window.padding]
 x = 2
 y = 2
-
-[keyboard]
 
 [font]
 size = 14.0
