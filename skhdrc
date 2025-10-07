@@ -1,17 +1,16 @@
 # launch applications
-ctrl - 1: open -a "iterm"
-# ctrl - 1: open -a "alacritty"
-ctrl - 2: open -a "visual studio code"
+ctrl - 1: open -a "alacritty"
+ctrl - 2: open -a "cursor"
 ctrl - 3: open -a "safari"
-ctrl - 4: open -a "qq"
+ctrl - 4: open -a "lark"
 ctrl - 5: open -a "google chrome"
-ctrl - 6: open -a "finder"
+ctrl - 6: open -a "datagrip"
 
 # move window
-alt - h: yabai -m window --move rel:-20:0
-alt - l: yabai -m window --move rel:20:0
-alt - j: yabai -m window --move rel:0:20
-alt - k : yabai -m window --move rel:0:-20
+alt - h: yabai -m window --move rel:-100:0
+alt - l: yabai -m window --move rel:100:0
+alt - j: yabai -m window --move rel:0:100
+alt - k : yabai -m window --move rel:0:-100
 
 # change opacity
 cmd - u [
