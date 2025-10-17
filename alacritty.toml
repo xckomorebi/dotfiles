@@ -54,12 +54,12 @@ blur = true
 option_as_alt = "both"
 
 [window.dimensions]
-columns = 100
-lines = 50
+columns = 150
+lines = 75
 
 [window.padding]
-x = 2
-y = 2
+x = 0
+y = 0
 
 [font]
 size = 14.0
