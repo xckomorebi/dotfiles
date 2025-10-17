@@ -32,6 +32,7 @@ if [ -x "$(command -v fzf)" ]; then
 fi
 
 if [ -x "$(command -v nvim)" ]; then
+    export MANPAGER="nvim +Man!"
     alias vim=nvim
 fi
 
