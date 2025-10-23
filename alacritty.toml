@@ -49,7 +49,7 @@ save_to_clipboard = false
 [window]
 decorations = "buttonless"
 dynamic_padding = false
-opacity = 0.70
+opacity = 0.74
 blur = true
 option_as_alt = "both"
 
@@ -58,8 +58,8 @@ columns = 150
 lines = 75
 
 [window.padding]
-x = 0
-y = 0
+x = 1
+y = 1
 
 [font]
 size = 14.0
