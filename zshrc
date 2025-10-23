@@ -1,55 +1,53 @@
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
+# zsh
 export ZSH="${HOME}/.oh-my-zsh"
-export EDITOR="nvim"
 
 ZSH_THEME="powerlevel10k/powerlevel10k" # set by `omz`
 
 HIST_STAMPS="mm/dd/yyyy"
 
-plugins=(tmux git docker brew mvn golang)
+plugins=(tmux git docker brew golang)
 
 source $ZSH/oh-my-zsh.sh
+
+# locale
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/.local/bin
 
-export BC_ENV_ARGS="${HOME}/.bc"
+export HOMEBREW_NO_AUTO_UPDATE=1
 
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-
-alias act='source venv/bin/activate'
-
-if [ -x "$(command -v yt-dlp)" ]; then
-    alias youtube-dl="yt-dlp"
-fi
-
+# fzf
 if [ -x "$(command -v fzf)" ]; then
     source <(fzf --zsh)
 fi
 
+# nvim
 if [ -x "$(command -v nvim)" ]; then
-    export MANPAGER="nvim +Man!"
     alias vim=nvim
+    export EDITOR="nvim"
+    export MANPAGER="nvim +Man!"
 fi
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 if [ -e "${HOME}/.zshrc_local" ]; then
     source "${HOME}/.zshrc_local"
 fi
 
+ZSH_CONFIG_DIR="${XDG_CACHE_HOME:-$HOME/.config}/zsh"
+for config_file in $ZSH_CONFIG_DIR/*.zsh; do
+    [[ -f "$config_file" ]] && source "$config_file"
+done
+
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-source /Users/xuchen/.docker/init-zsh.sh || true # Added by Docker Desktop
-
-function update_conf_path() {
-    export CONF_PATH=$(pwd)/config
-}
-autoload -U add-zsh-hook
-add-zsh-hook chpwd update_conf_path
-update_conf_path
