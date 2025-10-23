@@ -1,8 +1,16 @@
 # launch applications
+#
 ctrl - 1: open -a "alacritty"
+# ctrl - 1: open -a "iterm"
+
 ctrl - 2: open -a "cursor"
+# ctrl - 2: open -a "Visual Studio Code"
+
 ctrl - 3: open -a "safari"
+
 ctrl - 4: open -a "lark"
+# ctrl - 4: open -a "QQ"
+
 ctrl - 5: open -a "google chrome"
 ctrl - 6: open -a "datagrip"
 
@@ -16,7 +24,7 @@ alt - k : yabai -m window --move rel:0:-100
 cmd - u [
   "iTerm2" ~
   "Alacritty" ~
-  * : yabai -m window --opacity $(yabai -m query --windows --window | jq -r 'if .opacity < 1.0 then "1.0" else "0.9" end')
+  # * : yabai -m window --opacity $(yabai -m query --windows --window | jq -r 'if .opacity < 1.0 then "1.0" else "0.9" end')
 ]
 
 # rotate tree
