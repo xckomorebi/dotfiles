@@ -25,7 +25,7 @@ clean:
 	rm -f coverage.txt coverage.xml tests.xml coverage.html
 
 coverage.txt: $(GOSRC_FILES)
-	gotestsum -- -coverprofile=coverage.txt -gcflags="all=-N -l" -covermode=count -coverpkg=./pkg/... -skip '' ./... || (rm -f coverage.txt && exit 1)
+	gotestsum -- -coverprofile=coverage.txt -gcflags="all=-N -l" -covermode=set -coverpkg=./pkg/... -skip '' ./... || (rm -f coverage.txt && exit 1)
 	merge-cover.py -s gitlab.infini-ai.com/infini-cloud/$(PROJECT_NAME)/ -o coverage.txt
 
 coverage.xml: coverage.txt
