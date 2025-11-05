@@ -22,11 +22,13 @@ coverage: coverage.xml
 
 .PHONY: clean
 clean:
-	rm -f coverage.txt coverage.xml tests.xml coverage.html
+	rm -f coverage.txt coverage.xml tests.xml coverage.html $(BIN_NAME)
 
 coverage.txt: $(GOSRC_FILES)
-	gotestsum -- -coverprofile=coverage.txt -gcflags="all=-N -l" -covermode=set -coverpkg=./pkg/... -skip '' ./... || (rm -f coverage.txt && exit 1)
-	merge-cover.py -s gitlab.infini-ai.com/infini-cloud/$(PROJECT_NAME)/ -o coverage.txt
+	gotestsum -- -coverprofile=coverage.txt -gcflags="all=-N -l" -covermode=count -coverpkg=./pkg/... -skip '' ./... || (rm -f coverage.txt && exit 1)
+	gocovmerge coverage.txt > coverage_merged.txt
+	mv coverage_merged.txt coverage.txt
+	sed -i '' 's|gitlab.infini-ai.com/infini-cloud/$(PROJECT_NAME)/|./|g' coverage.txt
 
 coverage.xml: coverage.txt
 	gocover-cobertura < coverage.txt > coverage.xml 
