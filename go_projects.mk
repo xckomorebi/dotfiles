@@ -1,13 +1,14 @@
+GOSRC_FILES := $(shell find . -name '*.go' -not -path './.git/*')
+PROJECT_NAME := $(shell basename $(shell pwd))
+BIN_NAME ?= $(subst -,_,$(PROJECT_NAME))_bin
+COMMIT_HASH ?= $(shell git rev-parse --short HEAD)
+
 COVERAGE_REQUIREMENT ?= 0
 CI_MERGE_REQUEST_TARGET_BRANCH_NAME ?= main
-COMMIT_HASH ?= $(shell git rev-parse --short HEAD)
 
 export CI_PIPELINE_SOURCE=merge_request_event
 
-GOSRC_FILES := $(shell find . -name '*.go' -not -path './.git/*')
-
-PROJECT_NAME := $(shell basename $(shell pwd))
-BIN_NAME ?= $(shell echo $(PROJECT_NAME) | tr '-' '_')_bin
+SKIP_ARGS := $(shell get_skip_tests.py)
 
 .PHONY: all
 all: coverage
@@ -25,7 +26,7 @@ clean:
 	rm -f coverage.txt coverage.xml tests.xml coverage.html $(BIN_NAME)
 
 coverage.txt: $(GOSRC_FILES)
-	gotestsum -- -coverprofile=coverage.txt -gcflags="all=-N -l" -covermode=count -coverpkg=./pkg/... -skip '' ./... || (rm -f coverage.txt && exit 1)
+	gotestsum -- -coverprofile=coverage.txt -gcflags="all=-N -l" -covermode=count -coverpkg=./pkg/... $(SKIP_ARGS) ./... || (rm -f coverage.txt && exit 1)
 	gocovmerge coverage.txt > coverage_merged.txt
 	mv coverage_merged.txt coverage.txt
 	sed -i '' 's|gitlab.infini-ai.com/infini-cloud/$(PROJECT_NAME)/|./|g' coverage.txt
