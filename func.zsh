@@ -55,3 +55,7 @@ dockerfile.xc
 .cursor
 EOF
 }
+
+function ala() {
+    alacritty --working-directory=$(pwd)
+}
