@@ -42,18 +42,6 @@ function init_go_project() {
     SCRIPT_DIR=~/repo/dotfiles
 
     cp $SCRIPT_DIR/go_projects.mk $(pwd)/Makefile
-
-    cat << EOF >> $(pwd)/.git/info/exclude
-
-*.bak
-*.xc.yml
-coverage.txt
-coverage.xml
-coverage.html
-Makefile
-dockerfile.xc
-.cursor
-EOF
 }
 
 function ala() {
