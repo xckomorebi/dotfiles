@@ -1,8 +1,8 @@
 GOSRC_FILES			:= $(shell find . -name '*.go' -not -path './.git/*')
-SKIP_ARGS			:= $(shell get_skip_tests.py)
+SKIP_ARGS			?= $(shell command -v get_skip_tests.py >/dev/null 2>&1 && get_skip_tests.py || echo "")
 COMMIT_HASH			:= $(shell git rev-parse --short HEAD)
 CI_COMMIT_BRANCH	:= $(shell git rev-parse --abbrev-ref HEAD)
-
+GO_MODULE_PATH		?= $(shell go list -m)
 USERNAME			?= $(shell whoami)
 PROJECT_NAME		?= $(shell basename $(shell pwd))
 BIN_NAME			?= $(subst -,_,$(PROJECT_NAME))_bin
@@ -10,14 +10,12 @@ BIN_PATH			?= output/$(BIN_NAME)
 COVERAGE_ENV_PATH	:= output/coverage_env.sh
 
 HARBOR_ADDR 	?= harbor.infini-ai.com
-IMAGE_ADDR 		?= $(HARBOR_ADDR)/$(USERNAME)/$(PROJECT_NAME):$(COMMIT_HASH)
+IMAGE_ADDR 		:= $(HARBOR_ADDR)/$(USERNAME)/$(PROJECT_NAME):$(COMMIT_HASH)
 DOCKERFILE_PATH ?= dockerfile
 
 COVERAGE_REQUIREMENT 				?= 0
 CI_MERGE_REQUEST_TARGET_BRANCH_NAME ?= main
 DEFAULT_TARGET 						?= coverage
-
-export CI_PIPELINE_SOURCE=merge_request_event
 
 .PHONY: all
 all: $(DEFAULT_TARGET)
@@ -44,7 +42,6 @@ help:
 	@echo "  BIN_NAME              = $(BIN_NAME)"
 	@echo "  BIN_PATH              = $(BIN_PATH)"
 	@echo "  HARBOR_ADDR           = $(HARBOR_ADDR)"
-	@echo "  IMAGE_ADDR            = $(IMAGE_ADDR)"
 	@echo "  DOCKERFILE_PATH       = $(DOCKERFILE_PATH)"
 	@echo "  DEFAULT_TARGET        = $(DEFAULT_TARGET)"
 
@@ -57,7 +54,7 @@ just_test:
 
 .PHONY: coverage
 coverage: coverage.xml
-	COVERAGE_REQUIREMENT=$(COVERAGE_REQUIREMENT) CI_MERGE_REQUEST_TARGET_BRANCH_NAME=$(CI_MERGE_REQUEST_TARGET_BRANCH_NAME) ./ci-coverage.sh
+	CI_PIPELINE_SOURCE=merge_request_event COVERAGE_REQUIREMENT=$(COVERAGE_REQUIREMENT) CI_MERGE_REQUEST_TARGET_BRANCH_NAME=$(CI_MERGE_REQUEST_TARGET_BRANCH_NAME) ./ci-coverage.sh
 	@open coverage.html
 
 .PHONY: clean
@@ -69,7 +66,7 @@ coverage.txt: $(GOSRC_FILES)
 	gotestsum -- -coverprofile=coverage.txt -gcflags="all=-N -l" -covermode=count -coverpkg=./pkg/... $(SKIP_ARGS) ./... || (rm -f coverage.txt && exit 1)
 	gocovmerge coverage.txt > coverage_merged.txt
 	mv coverage_merged.txt coverage.txt
-	sed -i '' 's|gitlab.infini-ai.com/infini-cloud/$(PROJECT_NAME)/|./|g' coverage.txt
+	sed -i '' 's|$(GO_MODULE_PATH)/|./|g' coverage.txt
 
 coverage.xml: coverage.txt
 	gocover-cobertura < coverage.txt > coverage.xml
