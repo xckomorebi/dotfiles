@@ -47,3 +47,34 @@ function init_go_project() {
 function ala() {
     alacritty --working-directory=$(pwd)
 }
+
+function cpdate() {
+    date +'%Y%m%d' | tr -d '\n' | pbcopy
+}
+
+function bak() {
+    if [[ $# -eq 0 ]]; then
+        echo "Usage: bak <file>..."
+        echo "Toggle .bak extension on files"
+        return 1
+    fi
+
+    for file in "$@"; do
+        if [[ ! -e "$file" ]]; then
+            echo "Error: $file does not exist"
+            continue
+        fi
+
+        if [[ "$file" == *.bak ]]; then
+            # Remove .bak suffix
+            local newname="${file%.bak}"
+            mv "$file" "$newname"
+            echo "$file -> $newname"
+        else
+            # Add .bak suffix
+            local newname="${file}.bak"
+            mv "$file" "$newname"
+            echo "$file -> $newname"
+        fi
+    done
+}
