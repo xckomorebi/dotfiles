@@ -1,0 +1,16 @@
+# global git ignore
+# git config --global core.excludesfile ~/.gitignore
+
+# system files
+.DS_Store
+
+.vim
+
+# general ignored pattern
+*.bak
+xc.local.*
+
+# go dev
+dockerfile.xc
+config.xc.yml
+skipped_tests.txt
