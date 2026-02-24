@@ -19,14 +19,14 @@ ctrl - 6: open -a "datagrip"
 alt - h: yabai -m window --move rel:-100:0
 alt - l: yabai -m window --move rel:100:0
 alt - j: yabai -m window --move rel:0:100
-alt - k : yabai -m window --move rel:0:-100
+alt - k: yabai -m window --move rel:0:-100
 
 # change opacity
-cmd - u [
-  "iTerm2" ~
-  "Alacritty" ~
-  # * : yabai -m window --opacity $(yabai -m query --windows --window | jq -r 'if .opacity < 1.0 then "1.0" else "0.9" end')
-]
+# cmd - u [
+#   "iTerm2" ~
+#   "Alacritty" ~
+#   * : yabai -m window --opacity $(yabai -m query --windows --window | jq -r 'if .opacity < 1.0 then "1.0" else "0.9" end')
+# ]
 
 # rotate tree
 alt - r: yabai -m space --rotate 90
@@ -44,7 +44,7 @@ alt - t: yabai -m window --toggle float;\
 alt - s: yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "float" else "bsp" end')
 
 # balance size of windows
-shift + alt - 0: yabai -m space --balance
+# shift + alt - 0: yabai -m space --balance
 
 # resize window
 shift + alt - h : yabai -m window --resize left:-20:0
