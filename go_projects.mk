@@ -64,9 +64,6 @@ clean:
 
 coverage.txt: $(GOSRC_FILES)
 	gotestsum -- -coverprofile=coverage.txt -gcflags="all=-N -l" -covermode=count -coverpkg=./pkg/... $(SKIP_ARGS) ./... || (rm -f coverage.txt && exit 1)
-	gocovmerge coverage.txt > coverage_merged.txt
-	mv coverage_merged.txt coverage.txt
-	sed -i '' 's|$(GO_MODULE_PATH)/|./|g' coverage.txt
 
 coverage.xml: coverage.txt
 	gocover-cobertura < coverage.txt > coverage.xml

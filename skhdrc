@@ -28,6 +28,12 @@ alt - k: yabai -m window --move rel:0:-100
 #   * : yabai -m window --opacity $(yabai -m query --windows --window | jq -r 'if .opacity < 1.0 then "1.0" else "0.9" end')
 # ]
 
+# bind cmd + h to hide application for vscode
+cmd - h [
+  "Code" : osascript -e 'tell application "System Events" to set visible of process "Code" to false'
+  * ~
+]
+
 # rotate tree
 alt - r: yabai -m space --rotate 90
 
@@ -41,7 +47,9 @@ alt - t: yabai -m window --toggle float;\
 # toggle window split type
 # alt - e : yabai -m window --toggle split
 
-alt - s: yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "float" else "bsp" end')
+# alt - s: yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "float" else "bsp" end')
+
+alt - s: yabai -m window --grid 1:1:0:0:1:1
 
 # balance size of windows
 # shift + alt - 0: yabai -m space --balance
