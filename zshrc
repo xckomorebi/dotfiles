@@ -14,6 +14,11 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 export PATH=$PATH:$HOME/bin
+
+# Load completions from ~/bin/completion
+fpath=($HOME/bin/completion $fpath)
+autoload -Uz compinit && compinit
+
 export PATH=$PATH:$HOME/.local/bin
 
 export HOMEBREW_NO_AUTO_UPDATE=1
