@@ -30,19 +30,19 @@ alt - k: yabai -m window --move rel:0:-100
 
 # bind cmd + h to hide application for vscode
 cmd - h [
-  "Code" : osascript -e 'tell application "System Events" to set visible of process "Code" to false'
-  * ~
+    "Code" : osascript -e 'tell application "System Events" to set visible of process "Code" to false'
+    * ~
 ]
 
 # rotate tree
-alt - r: yabai -m space --rotate 90
+# alt - r: yabai -m space --rotate 90
 
 # flip tree
-alt - p: yabai -m space --mirror y-axis
+# alt - p: yabai -m space --mirror y-axis
 
 # float / unfloat window and center on screen
-alt - t: yabai -m window --toggle float;\
-         yabai -m window --grid 10:10:4:1:4:8
+# alt - t: yabai -m window --toggle float;\
+#          yabai -m window --grid 10:10:4:1:4:8
 
 # toggle window split type
 # alt - e : yabai -m window --toggle split
@@ -66,5 +66,5 @@ ctrl + alt - k : yabai -m window --resize bottom:0:-20
 ctrl + alt - l : yabai -m window --resize right:-20:0
 
 .blacklist [
-  "Logic Pro"
+    "Logic Pro"
 ]
