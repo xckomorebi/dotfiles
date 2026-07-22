@@ -1,6 +1,9 @@
 # zsh
 export ZSH="${HOME}/.oh-my-zsh"
 
+# dedupe PATH entries so repeated sourcing doesn't accumulate duplicates
+typeset -U path PATH
+
 ZSH_THEME="powerlevel10k/powerlevel10k" # set by `omz`
 
 HIST_STAMPS="mm/dd/yyyy"
