@@ -8,7 +8,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k" # set by `omz`
 
 HIST_STAMPS="mm/dd/yyyy"
 
-plugins=(tmux git docker brew golang)
+plugins=(tmux git docker brew golang rust)
 
 source $ZSH/oh-my-zsh.sh
 
