@@ -5,11 +5,6 @@ set belloff=all
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-<<<<<<< HEAD
-=======
-" set tabstop=2 softtabstop=2
-" set shiftwidth=2
->>>>>>> 3ea9371 (new branch for archlinux)
 
 set mouse=a
 map <ScrollWheelUp> <C-Y>
@@ -86,17 +81,8 @@ let mapleader=" "
 " nnoremap <leader>b <cmd>NERDTreeToggle<cr>
 " nnoremap <leader>r <cmd>NERDTreeFind<cr>
 
-" wilder
-" call wilder#setup({'modes': [':', '/', '?']})
-
-" keymapping
-silent! nmap <M-b> <cmd>NERDTreeToggle<CR>
-silent! nmap <A-F> <cmd>call CocAction('format')<CR>
-
-silent! nmap <M-a> <cmd>Commentary<CR>
-silent! vmap <M-a> :Commentary<CR>
-
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
+" nnoremap <leader>ff <cmd>Telescope find_files<cr>
+" nnoremap <leader>fp <cmd>Telescope git_files<cr>
+" nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+" nnoremap <leader>fb <cmd>Telescope buffers<cr>
 " nnoremap <leader>fh <cmd>Telescope help_tags<cr>
