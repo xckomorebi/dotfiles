@@ -66,3 +66,8 @@ size = 14.0
 
 [font.normal]
 family = "MesloLGS Nerd Font"
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001B\r"
