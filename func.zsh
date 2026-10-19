@@ -1,6 +1,6 @@
 # proxy
 function setup_clash() {
-    export NO_PROXY="localhost,gitlab.infini-ai.com,127.0.0.1,::1"
+    export NO_PROXY="local,localhost,gitlab.infini-ai.com,127.0.0.1,::1"
     export HTTP_PROXY="http://localhost:7897"
     export HTTPS_PROXY="http://localhost:7897"
     export http_proxy="http://localhost:7897"
