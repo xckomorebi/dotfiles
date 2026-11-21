@@ -18,7 +18,8 @@ function unset_proxy() {
 }
 
 # setup proxy in alacritty
-[[ "$ALACRITTY_WINDOW_ID"x != x ]] && setup_clash
+# [[ "$ALACRITTY_WINDOW_ID"x != x ]] && setup_clash
+setup_clash
 
 # reset dynamic wall paper
 function reset_dw() {
