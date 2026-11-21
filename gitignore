@@ -16,3 +16,5 @@ config.xc.yml
 skipped_tests.txt
 
 .ma
+
+**/.claude/settings.local.json
