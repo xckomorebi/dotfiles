@@ -18,3 +18,5 @@ skipped_tests.txt
 .ma
 
 **/.claude/settings.local.json
+
+__debug*
